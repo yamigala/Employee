@@ -1,0 +1,27 @@
+<!-- template of addEmp form -->
+
+
+<form [formGroup]="empForm" (ngSubmit)="onSubmit(empForm.value)">
+  <label> ID
+    <input type="number" formControlName="id" required>
+  </label><br>
+  <label> NAME
+    <input type="text" formControlName="name" required>
+  </label><br>
+  <label>AGE
+    <input type="number" formControlName="age" required>
+  </label><br>
+  <label>DESIGNATION
+    <select>
+      <option> hr</option>
+      <option> manager</option>
+      <option> developer</option>
+      
+      <input type="text" formControlName="designation" required>
+    </select>
+  </label><br>
+  <label>JOINING DATE
+    <input type="date" formControlName="joinningDate" required>
+  </label><br>
+  <input type="submit">
+</form>

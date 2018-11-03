@@ -1,0 +1,7 @@
+<!-- display data in view link  -->
+<div *ngFor='let data of empData; let i=index'>
+    <p>{{data | json}}</p>
+
+    <!-- perform delete operation on delete click -->
+    <button (click)="delete(i)">delete</button>
+</div>
