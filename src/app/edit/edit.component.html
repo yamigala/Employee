@@ -1,0 +1,18 @@
+<h1>edit form</h1>
+<form [formGroup]="empForm" (ngSubmit)="onUpdate(empForm.value)" novalidate>
+  <label> ID <input type="number" formControlName="id" /> </label><br />
+  <label> NAME <input type="text" formControlName="name" /> </label><br />
+  <label>AGE <input type="number" formControlName="age" /> </label><br />
+  <label
+    >DESIGNATION
+    <select>
+      <option> hr</option>
+      <option> manager</option>
+      <option> developer</option>
+
+      <input type="text" formControlName="designation" />
+    </select> </label
+  ><br />
+  <input type="date" formControlName="date" /><br />
+  <input type="submit" value="Update" />
+</form>

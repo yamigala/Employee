@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmpService } from '../../core/emp.service';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -12,8 +13,9 @@ import { Validators } from '@angular/forms';
 export class AddEmpComponent implements OnInit {
   emp;
   empdetails;
-  constructor(private service: EmpService, private fb: FormBuilder) { }
-
+  constructor(private service: EmpService, private fb: FormBuilder,private calendar: NgbCalendar) { }
+  model: NgbDateStruct;
+  date: {year: number, month: number};
   empForm = this.fb.group({
 /**
  * required validation 
@@ -48,5 +50,15 @@ export class AddEmpComponent implements OnInit {
     )
   }
 
+  update(id:number): void {
+
+    console.log('BEFORE ' + this.emp);
+    // let emp = Object.assign({}, this.employeeForm.value);
+    this.service.update(id).subscribe (data => {
+      this.emp = data;
+    });
+    
+    console.log('After RETURN  ' + this.emp);
+  }
 }
 

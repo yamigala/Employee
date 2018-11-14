@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { AddEmpRoutingModule } from './add-emp-routing.module';
 import { AddEmpComponent } from './add-emp/add-emp.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     AddEmpRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   declarations: [AddEmpComponent]
 })
