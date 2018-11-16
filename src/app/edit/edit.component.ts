@@ -10,11 +10,9 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./edit.component.css"]
 })
 export class EditComponent implements OnInit {
-  // consructor() { }
-
-  empData: employee;
-  empdetails;
-  updateEmp;
+ public empData: employee;
+  empdetails: employee;
+  updateEmployee;
 
   id: number;
   constructor(
@@ -23,49 +21,47 @@ export class EditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.empData = new employee();
-    this.id = +this.route.snapshot.paramMap.get("id");
-    this.updateEmp = [];
+    // this.empData = new employee();
+    // this.id = +this.route.snapshot.paramMap.get("id");
+    // this.updateEmployee = [];
   }
-
+  /**
+   * forms control
+   */
   empForm = this.fb.group({
-    /**
-     * required validation
-     */
     id: ["", Validators.required],
     name: ["", Validators.required],
     age: ["", Validators.required],
     designation: ["", Validators.required],
     date: ["", Validators.required]
   });
-
-  ngOnInit() {}
-  getEmpDetails(emp: employee) {
-    debugger;
-    this.empData = emp;
-    this.empForm.patchValue({
-      id: this.empData.id,
-      name: this.empData.name,
-      age: this.empData.age,
-      designation: this.empData.designation,
-      date: this.empData.joiningDate
-    });
+/**
+ * form validation
+ */
+  ngOnInit() {
+    this.getData();
   }
+
   getData() {
-    this.service.getData().subscribe(data => {
+    const id = +this.route.snapshot.paramMap.get("id");
+    this.service.getData1(id).subscribe(data => {
       this.empdetails = data;
       console.log("hello get data", this.empdetails);
+      this.empForm.patchValue({
+        id: this.empdetails.id,
+        name: this.empdetails.name,
+        age: this.empdetails.age,
+        designation: this.empdetails.designation,
+        date: this.empdetails.joiningDate
+      });
     });
   }
 
   onUpdate(id: number) {
-    this.service.update(id).subscribe(data => {
-      this.getEmpDetails(this.empData);
+    this.service.updateEmployee(id).subscribe(data => {
+      this.empData = data;
+      this.router.navigate(["/view"]);
       console.log("from edit");
     });
-    // this.service.update(id).subscribe(data => {
-    //   this.updateEmp = data;
-    //   console.log("update", this.updateEmp);
-    // });
   }
 }

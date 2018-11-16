@@ -19,7 +19,6 @@ export class ViewEmpComponent implements OnInit {
    * 
    */
   ngOnInit() {
-    debugger
     this.service.getData().subscribe(data => {
       this.empData = data;
       console.log(this.empData);
@@ -38,16 +37,5 @@ export class ViewEmpComponent implements OnInit {
       console.log(this.empData);
     });
     console.log("delete function call");
-  }
-  update(id: number) {
-    debugger
-    
-    this.service.update(id).subscribe(data=>{
-      
-      let temp=data;
-      
-      console.log(temp);
-      
-    })
   }
 }

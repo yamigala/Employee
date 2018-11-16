@@ -4,6 +4,6 @@
   <p>{{ data.id }}</p>
   <!-- perform delete operation on delete click -->
   <button (click)="delete(data.id)">delete</button>
-  <button (click)="update(data.id)">Edit</button>
-  <a routerLink='/edit/{{data.id}}'>edit</a>
+  
+  <button routerLink='/edit/{{data.id}}'>edit</button>
 </div>

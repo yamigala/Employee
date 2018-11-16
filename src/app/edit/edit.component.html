@@ -1,6 +1,6 @@
 <h1>edit form</h1>
 <form [formGroup]="empForm" (ngSubmit)="onUpdate(empForm.value)" novalidate>
-  <label> ID <input type="number" formControlName="id" /> </label><br />
+  <!-- <label> ID <input type="number" formControlName="id" /> </label><br /> -->
   <label> NAME <input type="text" formControlName="name" /> </label><br />
   <label>AGE <input type="number" formControlName="age" /> </label><br />
   <label
@@ -13,6 +13,7 @@
       <input type="text" formControlName="designation" />
     </select> </label
   ><br />
-  <input type="date" formControlName="date" /><br />
-  <input type="submit" value="Update" />
+  <input type="string" formControlName="date" /><br />
+  <!-- <input type="submit" value="Update" /> -->
+  <button type="submit"  >Update</button>
 </form>

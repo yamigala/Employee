@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-
-import { employee } from "./emp.model";
 import { Observable } from "rxjs/Observable";
 import { HttpClient } from "@angular/common/http";
+//---------------------------------------------------------//
+import { employee } from "./emp.model";
 
 @Injectable()
 export class EmpService {
@@ -11,13 +11,20 @@ export class EmpService {
 
   constructor(private http: HttpClient) {}
   /**
-   * get method
+   * to get data from service
    */
   public getData(): Observable<employee[]> {
     return this.http.get<employee[]>(this.empUrl);
   }
   /**
-   * post method
+   * 
+   * @param id :to get data of particular id
+   */
+  public getData1(id): Observable<employee> {
+    return this.http.get<employee>(this.empUrl+"/"+id);
+  }
+  /**
+   * to add data in database
    */
   public empdetails(data): Observable<employee> {
     return this.http.post<employee>(this.empUrl, data);
@@ -30,8 +37,7 @@ export class EmpService {
   public edit(id: number): Observable<employee> {
     return this.http.get<employee>(this.empUrl + id);
   }
-  public update(id: number): Observable<employee> {
-    // this.getData();
+  public updateEmployee(id: number): Observable<employee> {
     return this.http.put<employee>(this.empUrl, id);
   }
 }
